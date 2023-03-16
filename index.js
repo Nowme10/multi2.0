@@ -12,17 +12,17 @@ if(!score){
     score = 0;
 }
 scoreEl.innerText = `score: ${score}`;
-formEl.addEventListener("submit", ()=>{
-    const userAns = +inputEl.value
+const handleSubmit = () => {
+        const userAns = +inputEl.value
     if(userAns === correctAns){
-        score++;
+        score = score + 1;
         updateLocalStorage()
     }else{
-        score--;
+        score = score - 1;
         updateLocalStorage()
     }
-
-})
+}
+formEl.addEventListener("submit", handleSubmit);
 
 function updateLocalStorage(){
     localStorage.setItem("score", JSON. stringify(score))
